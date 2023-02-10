@@ -105,9 +105,6 @@ def projective_expected(theta, ansatz, psi0):
 
     energy = 0.0
 
-    # although the paper indexes the hamiltonian left-to-right (0-to-1)
-    # qubit-1 is always the top qubit for us, so the tensor pdt changes
-    # e.g. compare with the "exact Hamiltonian" we explicitly diagonalized
 
     # <I1 I0>
     energy += g0  # it is a constant
@@ -135,7 +132,7 @@ def projective_expected(theta, ansatz, psi0):
 # ************  Energy Calculation by Python Manualy *************
 # --------------------------------------------------------------------
 
-db = pd.read_excel('/Users/kourosh/Desktop/Demo/Demo_H2/Demo_Full.xlsx')
+db = pd.read_excel('YOUR Deire directory for coefficent database')
 
 energy_py_ucc = []
 dist = []
@@ -173,15 +170,15 @@ print('Run Time: ', runtime, 'sec', ' or ', runtime/60, 'min','\n')
 # --------------------------------------------------------------------
 df = pd.DataFrame(list(zip(dist, energy_py_ucc)),
                   columns = ['distance', 'Python Manually'])
-#df.to_excel("Diag.xlsx")
+df.to_excel("Diag.xlsx")
 print('-'*8, ' Final Results ', '-'*8)
 print(df)
+
 
 
 # --------------------------------------------------------------------
 # ******************************  Plot *******************************
 # --------------------------------------------------------------------
-
 plt.plot(dist, energy_py_ucc, '|', color='Red', label='Py_UCC_Parity')
 plt.grid(True, linestyle='-.', linewidth=0.5, which='major')
 plt.title("Ground State Energy Curve of hydrogen Molecule")
